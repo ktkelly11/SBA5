@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 const fs = require("fs");
 
-// added form for the requirement
+// added for the form requirement
 app.get("/users/new", (req, res) => {
   res.sendFile("/views/newUser.html", {
     root: __dirname,
