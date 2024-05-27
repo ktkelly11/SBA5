@@ -1,9 +1,9 @@
 // Example of error handling middleware
 
-// function error(status, msg) {
-//   const err = new Error(msg);
-//   err.status = status;
-//   return err;
-// }
+function error(status, msg) {
+  const err = new Error(msg);
+  err.status = status;
+  return err;
+}
 
-// module.exports = error;
+module.exports = error;
