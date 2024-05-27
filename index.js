@@ -11,6 +11,25 @@ const locationsRouter = require("./routes/locations.js");
 // error handling
 const error = require("./utilities/error.js");
 
+// connecting html
+app.engine("html", (filePath, options, callback) => {
+  fs.readFile(filePath, (err, content) => {
+    if (err) return callback(err);
+
+    const rendered = content
+      .toString()
+      .replaceAll("#title#", `${options.title}`)
+      .replace("#location#", `${(options.location, options.country)}`)
+      .replace("#user#", `${options.full_name}`)
+      .replace("#content#", `${options.content}`);
+  });
+});
+
+// telling express where templates are
+app.set("views", "./views");
+// telling express default view engine
+app.set("view engine", "index.html");
+
 // added for the form requirement
 app.get("/users/new", (req, res) => {
   res.sendFile("/views/newUser.html", {
