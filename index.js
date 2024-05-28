@@ -2,16 +2,15 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 // const fs = require("fs");
+// routers
+const usersRouter = require("./routes/users.js");
+const postsRouter = require("./routes/posts.js");
+const locationsRouter = require("./routes/locations.js");
 
 // telling express where templates are
 // app.set("views", "./views");
 // telling express default view engine
 app.set("view engine", "ejs");
-
-// routers
-const usersRouter = require("./routes/users.js");
-const postsRouter = require("./routes/posts.js");
-const locationsRouter = require("./routes/locations.js");
 
 // error handling
 const error = require("./utilities/error.js");
