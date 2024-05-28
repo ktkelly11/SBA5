@@ -36,4 +36,31 @@ router.get("/:id", (req, res, next) => {
   else next();
 });
 
+// POST route
+router.post("/", (req, res) => {
+  if (req.body.user_id && req.body.title && req.body.content) {
+    const post = {
+      id: posts[posts.length - 1].id + 1,
+      user_id: req.body.user_id,
+      title: req.body.title,
+      content: req.body.content,
+    };
+
+    posts.push(post);
+    res.json(posts[posts.length - 1]);
+  } else next(error(400, "Insufficient Data"));
+});
+
+// PATCH route to allow for changes
+router.patch("/:id", (req, res) => {
+  const post = posts.find((p, i) => {
+    if (p.id == req.params.id) {
+      return true;
+    }
+  });
+
+  if (post) res.json(post);
+  else next();
+});
+
 module.exports = router;
