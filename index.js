@@ -7,6 +7,10 @@ const usersRouter = require("./routes/users.js");
 const postsRouter = require("./routes/posts.js");
 const locationsRouter = require("./routes/locations.js");
 
+// Body-parser Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: true }));
+
 // telling express where templates are
 // app.set("views", "./views");
 // telling express default view engine
@@ -45,6 +49,10 @@ app.get("/", (req, res) => {
 app.use((req, res) => {
   next(error(404, "Resource Not Found"));
 });
+
+app.use("/users", usersRouter);
+app.use("/posts", postsRouter);
+app.use("/locations", locationsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
