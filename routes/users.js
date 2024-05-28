@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 // GET route for individual users
 router.get("/:id", (req, res, next) => {
-  const user = users.find((u) => u.id == req.params.id);
+  const user = users.find((u) => u.user_id == req.body.user_id);
 
   const links = [
     {
@@ -39,15 +39,15 @@ router.get("/:id", (req, res, next) => {
 // POST request
 router.post("/", (req, res) => {
   if (req.body.full_name && req.body.user_id && req.body.email) {
-    if (users.find((u) => u.username == req.body.username)) {
+    if (users.find((u) => u.user_id == req.body.user_id)) {
       res.json({ error: "Username Already Taken" });
       return;
     }
 
     const user = {
       id: users[users.length - 1].id + 1,
-      name: req.body.name,
-      username: req.body.username,
+      name: req.body.full_namename,
+      address: req.body.address,
       email: req.body.email,
     };
 
