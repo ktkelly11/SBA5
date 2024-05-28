@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     },
   ];
 
-  res.json({ posts });
+  res.json({ posts, links });
 });
 
 // GET route for individual posts
@@ -55,6 +55,19 @@ router.post("/", (req, res) => {
 router.patch("/:id", (req, res) => {
   const post = posts.find((p, i) => {
     if (p.id == req.params.id) {
+      return true;
+    }
+  });
+
+  if (post) res.json(post);
+  else next();
+});
+
+// DELETE request
+router.delete("/:id", (req, res) => {
+  const post = posts.find((p, i) => {
+    if (p.id == req.params.id) {
+      posts.splice(i, 1);
       return true;
     }
   });
