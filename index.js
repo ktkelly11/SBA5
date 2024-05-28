@@ -24,6 +24,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/users", (req, res) => {
+  console.log("Welcome to the users page!");
+  res.render("users");
+});
+
 // connecting html
 // app.engine("html", (filePath, options, callback) => {
 //   fs.readFile(filePath, (err, content) => {
