@@ -70,3 +70,5 @@ const posts = [
       "odit magnam ut saepe sed non qui\ntempora atque nihil\naccusamus illum doloribus illo dolor\neligendi repudiandae odit magni similique sed cum maiores",
   },
 ];
+
+module.exports = posts;

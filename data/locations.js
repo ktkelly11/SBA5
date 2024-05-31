@@ -60,3 +60,5 @@ const locations = [
     date: "2/7/2024",
   },
 ];
+
+module.exports = locations;

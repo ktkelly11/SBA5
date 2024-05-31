@@ -6,8 +6,8 @@ const users = require("../data/users");
 router.get("/", (req, res) => {
   const links = [
     {
-      href: "users/:id",
-      rel: ":id",
+      href: "users/:user_id",
+      rel: ":user_id",
       type: "GET",
     },
   ];
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 // GET route for individual users
-router.get("/:id", (req, res, next) => {
+router.get("/:user_id", (req, res, next) => {
   const user = users.find((u) => u.user_id == req.body.user_id);
 
   const links = [
